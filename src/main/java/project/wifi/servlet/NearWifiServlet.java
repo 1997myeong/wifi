@@ -1,6 +1,7 @@
 package project.wifi.servlet;
 
 
+import project.wifi.dao.LocationHistoryDao;
 import project.wifi.dto.WifiDto;
 
 import javax.servlet.ServletException;
@@ -82,10 +83,14 @@ public class NearWifiServlet extends HttpServlet {
                 wifiDto.setWORK_DTTM(rs.getString("WORK_DTTM"));
                 wifiList.add(wifiDto);
             }
+
+
             rs.close();
             pstmt.close();
             conn.close();
 
+            LocationHistoryDao locationHistoryDao = new LocationHistoryDao();
+            locationHistoryDao.savedLocationHistory(Double.toString(lnt), Double.toString(lat));
 
 
         } catch (SQLException  | ClassNotFoundException e) {

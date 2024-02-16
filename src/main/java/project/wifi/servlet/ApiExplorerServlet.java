@@ -141,6 +141,5 @@ public class ApiExplorerServlet extends HttpServlet {
 
         req.setAttribute("rowCount", rowCount);
         req.getRequestDispatcher("/load-wifi.jsp").forward(req, resp);
-        resp.sendRedirect("/load-wifi.jsp");
     }
 }
